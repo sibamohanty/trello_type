@@ -137,18 +137,15 @@ app.TestView = Backbone.View.extend({
      }, 
     create : function (){
         console.log("In create");
-       // console.log(this.newattributes());
-       // this is where it will take the Board Model and 
-       // create the TaskListView.
-       //
-        this.model.add( this.newattributes() );
-        //$("#center-display-area").append(this.task_tmpl());
-        // Show the three list view of task 
-        app.tasklistview = new app.TaskListViews({model:this.newattributes()});
+        if (!app.tasklistview){ 
+            this.model.add( this.newattributes() );
+            app.tasklistview = new app.TaskListViews({model:this.newattributes()});
+        }
         //console.log(this.model);
        // this.model.save(this.newattributes() );
         //this.close();
         //console.log(app.AllBoards);
+        this.close();
     },
     close: function() {
         this.clear();

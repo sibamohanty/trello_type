@@ -42,7 +42,7 @@ app.TaskCollection = Backbone.Collection.extend({
 app.Board = Backbone.Model.extend({
     name: "",
     
-   // taskList : app.
+    taskList : app.TaskLists,
     validate : function (attributes){
         if (attributes.name===undefined || attributes.name===''){
         return "Add a name plz";
@@ -135,11 +135,25 @@ app.TestView = Backbone.View.extend({
          };
      
      }, 
+     validate : function (){
+          var name = $('#board-name').val().trim();
+          console.log(name);
+          if (name==='' || name === undefined || !name){
+              return false;
+          }
+          return true;
+          
+     },
     create : function (){
         console.log("In create");
+        if (!this.validate()){
+            console.log()
+            alert("Add the name");
+            return;
+        }
         if (!app.tasklistview){ 
             this.model.add( this.newattributes() );
-            app.tasklistview = new app.TaskListViews({model:this.newattributes()});
+            app.tasklistview = new app.TaskListViews({model:this.newattributes(),collection:this.tasks});
         }
         //console.log(this.model);
        // this.model.save(this.newattributes() );
@@ -202,10 +216,10 @@ app.BoardView = Backbone.View.extend({
 
     render: function() {
         //this.el is what we defined in tagName. use $el to get access to jQuery html() function
-         //console.log( this.newboard(this.model.attributes) );
-         //console.log(this.model);
-         //console.log(this.model.get('name'))
-         this.$el.html( this.template( this.model.attributes ) );
+        //console.log( this.newboard(this.model.attributes) );
+        //console.log(this.model);
+        //console.log(this.model.get('name'))
+        this.$el.html( this.template( this.model.attributes ) );
         //this.$el.html(this.newboard());
         console.log(this);
         return this;
@@ -217,7 +231,7 @@ app.BoardView = Backbone.View.extend({
         console.log("Allow to make edit to the board name");
     },
     clear: function (){
-        console.log("Will completely destroy this model");
+        console.log("Will destroy this model");
         this.model.destroy();
     }
 
@@ -258,6 +272,7 @@ app.BoardListView = Backbone.View.extend({
         console.log(board);
         //
         var name = board.get('name');
+        
         var boardview = new app.BoardView({model:board});
         //console.log(boardview.render());
         $('#left-panel').append(boardview.render().el);

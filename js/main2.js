@@ -19,8 +19,7 @@ app.TaskCollection = Backbone.Collection.extend({
         });
         this.on('remove', function (model){
             console.log("There is an removal from the Task colletion");
-            console.log(model.get('name'));
-           // model.save();
+         
         });
         this.on('change', function(model){
             console.log("There is a change in the model");
@@ -35,7 +34,7 @@ app.TaskCollection = Backbone.Collection.extend({
          
     }
 
-})
+});
 
 
 // Individual Boards 
@@ -103,9 +102,7 @@ app.TestView = Backbone.View.extend({
         'click #create': 'create' ,
         'click #close': 'close'
 
-    },
-    
-    
+    }, 
    // model : app.AllBoards,
     render : function (){
         this.$el.html(this.newboard());
@@ -153,7 +150,7 @@ app.TestView = Backbone.View.extend({
         }
         if (!app.tasklistview){ 
             this.model.add( this.newattributes() );
-            app.tasklistview = new app.TaskListViews({model:this.newattributes(),collection:this.tasks});
+            app.tasklistview = new app.TaskListViews({model:this.newattributes(),tasks:this.tasks});
         }
         //console.log(this.model);
        // this.model.save(this.newattributes() );
@@ -178,6 +175,8 @@ app.TestView = Backbone.View.extend({
 app.TaskListViews  = Backbone.View.extend({
     el : "#center-display-area",
     
+    
+    
     //there is no events here as of now
     events :{},
     task_tmpl : _.template( $("#task-template").html()),
@@ -192,6 +191,18 @@ app.TaskListViews  = Backbone.View.extend({
         console.log(this.model.name);
         //this.$el.html(this.t)
         return this;
+    },
+    addATask : function(task){
+        var taskview = new app.TaskView({model:task});
+        if (task.status === 'done'){
+            console.log("Add to done panel");
+        }else if (task.statu==='tostart'){
+            console.log("Add to tostart panel");
+        }else {
+            console.log("Add to ongoing panel");
+        }
+    
+    
     }
 
 });

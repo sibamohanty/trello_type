@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Trello type Demo all</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" Trello like app">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+       
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body  style="background-color :#47B5DA";>
+  
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button id="boards" type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar">Boards By name</span>
+            <span class="icon-bar">Recent</span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="btn btn-info" href="#" id="show-boards">
+          
+              <span  title="List of Boards" id>Board</span>
+          </div>
+          <div class="nav-collapse collapse pull-right">
+           <div class="btn btn-info" id = "add-board">
+          
+              <span  title="List of Boards">Add </span>
+          </div>
+          </div>  
+         
+        </div>
+      </div>
+    <!--  Left hand side stuff here-->
+    <div id ="left-panel" class="clearfix" style= "margin:10px;position:fixed;float:left;background-color:#e3e3e3 ;z-index:10000;width:300px;left:0px:top40px"></div>
+         <div id= "center-display-area" style="width:100%;height:100%;margin:10px">
+    <script type="text/template" id="task-template">
+     
+      <div class="list" >
+      <div class="clearfix editable" attr="name" style="dispay:none"> 
+      <h4><%= name %></h4>
+      <h5 class="list-header-name hide-on-edit js-list-name current">Done</h5> 
+      <p class="list-header-num-cards hide js-num-cards"></p> 
+    
+      <div class="edit edit-heavy clearfix"> 
+        <textarea type="text" class="field single-line"></textarea>
+      </div>  
+      <a href="#" class="list-header-menu-icon icon-sm icon-menu dark-hover js-open-list-menu">
+      </a>  
+      </div> 
+      <div class="list-cards fancy-scrollbar clearfix js-list-cards js-sortable ui-sortable">
+      </div> <a class="open-card-composer js-open-card-composer" href="#">Add a card…</a> 
+      </div>
+    
+     
+    </script>
+    <!-- right side stuff here -->
+    <div class="container" id ="dispay-area" style="margin-left:5px;background-color:#e3e3e3" >
+    <script type="text/template" id= "new-board-template">
+    <!-- right hand side stuff-->
+    
+    <div class="container" style="width: 200px;
+    height: 280px;
+    float: right;
+    position :absolute;
+    top:50px;
+    right:10px;
+    margin-left:5px;
+    background-color:#e3e3e3
+    ">
+    <form id="new-board1" action=# style="margin:10px">
+        
+       Add
+       <label for="title">Title: </label><input id="board-name" type="text" style="width:170px"/>
+       <p >
+     A board is a collection of cards ordered in a list
+     of lists, use it to manage a project, track a collection
+     or organize anything.
+       </p>
+    <button id="create"> Create</button><button id="close">close</button>
+    </form>
+    </div>
+    
+    </script>
+    <script type="text/template" id="board-template">
+    <div class="boad-view" style= "margin:5px">
+    <span >
+      <label> <a id="name"><%= name %></a></label>
+      <button class="destroy" id="delete">delete</button>
+    </span>
+    </div>
+    
+    </script>
+    
+      
+    </div> <!-- /container -->
+      
+  <script type="text/template" id="task-template">
+    <div>
+       <%= title %>
+    </div>
+  </script>
+    </div>
+    <!--<script type="text/javascript" src="/js/jquery-1.3.2.js"></script>	
+    <script type="text/javascript" src="/js/main.js"></script>	
+    <script type="text/javascript" src="/js/handlebars-v1.3.0.js"></script>	
+  -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+   
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/underscore-1.6.js"></script>
+  <script src="js/lib/backbone-1.1.2.js"></script>
+  <script src="js/lib/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="/js/main2.js"></script>	
+
+  <!--script src="js/models/board.js"></script>
+  <script src="js/collections/boards.js"></script>
+  <script src="js/views/all_boards_view.js"></script>
+  <script src="js/views/app_view.js"></script>
+  <script src="js/app.js"></script-->
+
+   
+  </body>
+</html>

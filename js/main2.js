@@ -49,8 +49,8 @@ app.Board = Backbone.Model.extend({
         }
     },
     initialize : function (){
-        this.tasks = new app.TaskCollection;
-        this.tasks.url = '/board/' + this.id + '/tasks';
+        //this.tasks = new app.TaskCollection;
+        //this.tasks.url = '/board/' + this.id + '/tasks';
         //this.messages.on("reset", this.updateCounts);
         this.on("invalid", function (model, error){
             console.log(error);
